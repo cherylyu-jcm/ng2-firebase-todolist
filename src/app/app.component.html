@@ -6,4 +6,14 @@
 <div *ngIf="user.auth">
   Welcome {{ user.uid }}!
   <a href="#" (click)="logout()">Logout</a>
+
+  <ul>
+    <li *ngFor="let item of items | async">
+      <input type="checkbox" [(ngModel)]="item.isDone" (ngModelChange)="toggle(item)">
+      <input type="text" [(ngModel)]="item.text" (blur)="update(item)">
+      <a href="#" (click)="delete(item)">Remove</a>
+    </li>
+  </ul>
+
+  <input type="text" [(ngModel)]="newItem.text" (keyup.enter)="add(newItem)">
 </div>
