@@ -1,19 +1,59 @@
 <div *ngIf="!user.auth">
-  <button type="button" (click)="loginWithGuest()">Guest</button>
-  <button type="button" (click)="loginWithGoogle()">Google</button>
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m6 offset-m3">
+        <div class="login-card card-panel grey lighten-5 z-depth-1">
+          <h1 class="blue-grey-text text-lighten-2">Login</h1>
+
+          <div class="row">
+            <div class="col s10 offset-s1">
+              <ul class="login-btns">
+                <li><button type="button" class="btn-large btn-extended cyan lighten-1 waves-effect waves-light" (click)="loginWithGuest()">Guest</button></li>
+                <li><button type="button" class="btn-large btn-extended cyan lighten-1 waves-effect waves-light" (click)="loginWithGoogle()">Google</button></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div *ngIf="user.auth">
-  Welcome {{ user.uid }}!
-  <a href="#" (click)="logout()">Logout</a>
+  <nav class="navbar-fixed cyan lighten-1">
+    <div class="nav-wrapper">
+      <span class="left m-l-15">Hello, {{ user.anonymous ? 'Guest' : user.auth.displayName }}!</span>
+      <ul class="right">
+        <li><a href="#" (click)="logout()">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m8 offset-m2">
+        <div class="todo-card card-panel grey lighten-5 z-depth-1">
+          <h1 class="blue-grey-text text-lighten-2">ToDo</h1>
 
-  <ul>
-    <li *ngFor="let item of items | async">
-      <input type="checkbox" [(ngModel)]="item.isDone" (ngModelChange)="toggle(item)">
-      <input type="text" [(ngModel)]="item.text" (blur)="update(item)">
-      <a href="#" (click)="delete(item)">Remove</a>
-    </li>
-  </ul>
-
-  <input type="text" [(ngModel)]="newItem.text" (keyup.enter)="add(newItem)">
+          <div class="row">
+            <div class="col s10 offset-s1">
+              <ul class="todos">
+                <li *ngFor="let item of items | async; let i = index" class="clearfix" [ngClass]="{ 'is-done': item.isDone }">
+                  <div class="checkbox">
+                    <input type="checkbox" class="filled-in" id="checkbox-{{ i }}" [(ngModel)]="item.isDone" (ngModelChange)="toggle(item)">
+                    <label htmlFor="checkbox-{{ i }}"></label>
+                  </div>
+                  <input type="text" [(ngModel)]="item.text" (blur)="update(item)">
+                  <a href="#" class="btn-floating right waves-effect waves-light" (click)="delete(item)"><i class="material-icons">delete</i></a>
+                </li>
+              </ul>
+              <div class="todo-add">
+                <i class="material-icons">add</i>
+                <input type="text" [(ngModel)]="newItem.text" (keyup.enter)="add(newItem)" placeholder="Don't forget to...">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

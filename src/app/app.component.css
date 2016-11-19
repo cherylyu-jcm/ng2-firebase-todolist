@@ -1,0 +1,56 @@
+h1 {
+  font-weight: 300;
+  text-align: center;
+}
+
+.m-l-15 {
+  margin-left: 15px;
+}
+
+.m-r-15 {
+  margin-right: 15px;
+}
+
+.btn-extended {
+  width: 100%;
+}
+
+.login-card, .todo-card  {
+  margin-top: 100px;
+}
+
+.login-btns {
+  margin-top: 40px;
+}
+
+.login-btns li {
+  margin-bottom: 20px;
+}
+
+.todos li {
+  position: relative;
+  padding-left: 40px;
+}
+
+.todos .checkbox,
+.todo-add i {
+  position: absolute;
+  left: 0;
+  top: 10px;
+}
+
+.todos .btn-floating {
+  position: absolute;
+  right: 0;
+  top: -7px;
+}
+
+.todo-add {
+  position: relative;
+  padding-left: 40px;
+}
+
+.is-done input {
+  color: #26a69a;
+  font-style: italic;
+}
