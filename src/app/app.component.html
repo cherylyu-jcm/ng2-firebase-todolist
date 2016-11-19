@@ -1,3 +1,9 @@
-<h1>
-  {{title}}
-</h1>
+<div *ngIf="!user.auth">
+  <button type="button" (click)="loginWithGuest()">Guest</button>
+  <button type="button" (click)="loginWithGoogle()">Google</button>
+</div>
+
+<div *ngIf="user.auth">
+  Welcome {{ user.uid }}!
+  <a href="#" (click)="logout()">Logout</a>
+</div>
